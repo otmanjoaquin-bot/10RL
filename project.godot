@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-run/main_scene="res://level_1_2d.tscn"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 config_name="10RL - Rayman Style Prototype"
