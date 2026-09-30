@@ -53,10 +53,14 @@ func _physics_process(delta: float) -> void:
         respawn()
 
 func shoot() -> void:
-    var shot := SHOT_SCENE.instantiate()
+    var shot: Area2D = SHOT_SCENE.instantiate()
     get_tree().current_scene.add_child(shot)
     shot.global_position = global_position + Vector2(30.0 * facing, -2.0)
     shot.direction = Vector2(facing, 0)
+
+func level_complete() -> void:
+    velocity = Vector2.ZERO
+    set_physics_process(false)
 
 func take_damage(amount := 1) -> void:
     if invulnerable > 0.0:
