@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
     if player:
         var distance := global_position.distance_to(player.global_position)
         if distance <= detection_range:
-            var dx := sign(player.global_position.x - global_position.x)
+            var dx: float = sign(player.global_position.x - global_position.x)
             $Sprite2D.flip_h = dx < 0
             shoot_timer -= delta
             if shoot_timer <= 0.0:
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 func shoot_at_player() -> void:
     if projectile_scene == null or player == null:
         return
-    var shot = projectile_scene.instantiate()
+    var shot: Node2D = projectile_scene.instantiate()
     get_tree().current_scene.add_child(shot)
     shot.global_position = global_position + Vector2(0, -8)
     shot.direction = (player.global_position - global_position).normalized()
