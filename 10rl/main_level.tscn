@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource path="res://sprites/background.png" type="Texture2D" id="1"]
+[ext_resource path="res://sprites/mainpj.png" type="Texture2D" id="2"]
+[ext_resource path="res://sprites/PLATAFORM.png" type="Texture2D" id="3"]
+[ext_resource path="res://player.gd" type="Script" id="4"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+position = Vector2(576,324)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4")
+position = Vector2(160,400)
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("2")
+
+[node name="StartPlatform" type="StaticBody2D" parent="."]
+position = Vector2(220,500)
+
+[node name="Sprite" type="Sprite2D" parent="StartPlatform"]
+texture = ExtResource("3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform"]
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(520,400)
+
+[node name="Sprite" type="Sprite2D" parent="Platform2"]
+texture = ExtResource("3")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(820,300)
+
+[node name="Sprite" type="Sprite2D" parent="Platform3"]
+texture = ExtResource("3")
