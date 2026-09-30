@@ -1,39 +1,99 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=13 format=3]
 
-[ext_resource path="res://sprites/background.png" type="Texture2D" id="1"]
-[ext_resource path="res://sprites/mainpj.png" type="Texture2D" id="2"]
-[ext_resource path="res://sprites/PLATAFORM.png" type="Texture2D" id="3"]
-[ext_resource path="res://player.gd" type="Script" id="4"]
+[ext_resource type="Texture2D" path="res://10rl/sprites/background.png" id="1_bg"]
+[ext_resource type="Texture2D" path="res://10rl/sprites/mainpj.png" id="2_player"]
+[ext_resource type="Texture2D" path="res://10rl/sprites/PLATAFORM.png" id="3_platform"]
+[ext_resource type="Texture2D" path="res://10rl/sprites/enemy1.png" id="4_enemy1"]
+[ext_resource type="Texture2D" path="res://10rl/sprites/enemy2.png" id="5_enemy2"]
+[ext_resource type="Script" path="res://10rl/player.gd" id="6_player_script"]
+[ext_resource type="PackedScene" path="res://10rl/enemy.tscn" id="7_enemy"]
+
+[sub_resource type="RectangleShape2D" id="PlayerShape"]
+size = Vector2(30, 48)
+[sub_resource type="RectangleShape2D" id="PlatformShape"]
+size = Vector2(190, 28)
+[sub_resource type="RectangleShape2D" id="LongPlatformShape"]
+size = Vector2(420, 32)
 
 [node name="Level1" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("1")
-position = Vector2(576,324)
+texture = ExtResource("1_bg")
+position = Vector2(576, 324)
+scale = Vector2(1.8, 1.8)
+z_index = -10
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("4")
-position = Vector2(160,400)
+[node name="World" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="Player"]
-texture = ExtResource("2")
+[node name="StartFloor" type="StaticBody2D" parent="World"]
+position = Vector2(220, 560)
+collision_layer = 1
+[node name="Sprite2D" type="Sprite2D" parent="World/StartFloor"]
+texture = ExtResource("3_platform")
+scale = Vector2(2.5, 1.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StartFloor"]
+shape = SubResource("LongPlatformShape")
 
-[node name="StartPlatform" type="StaticBody2D" parent="."]
-position = Vector2(220,500)
+[node name="Platform1" type="StaticBody2D" parent="World"]
+position = Vector2(470, 470)
+[node name="Sprite2D" type="Sprite2D" parent="World/Platform1"]
+texture = ExtResource("3_platform")
+scale = Vector2(1.6, 1.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform1"]
+shape = SubResource("PlatformShape")
 
-[node name="Sprite" type="Sprite2D" parent="StartPlatform"]
-texture = ExtResource("3")
+[node name="Platform2" type="StaticBody2D" parent="World"]
+position = Vector2(710, 390)
+[node name="Sprite2D" type="Sprite2D" parent="World/Platform2"]
+texture = ExtResource("3_platform")
+scale = Vector2(1.5, 1.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform2"]
+shape = SubResource("PlatformShape")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StartPlatform"]
+[node name="Platform3" type="StaticBody2D" parent="World"]
+position = Vector2(920, 315)
+[node name="Sprite2D" type="Sprite2D" parent="World/Platform3"]
+texture = ExtResource("3_platform")
+scale = Vector2(1.25, 1.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform3"]
+shape = SubResource("PlatformShape")
 
-[node name="Platform2" type="StaticBody2D" parent="."]
-position = Vector2(520,400)
+[node name="GoalFloor" type="StaticBody2D" parent="World"]
+position = Vector2(1080, 540)
+[node name="Sprite2D" type="Sprite2D" parent="World/GoalFloor"]
+texture = ExtResource("3_platform")
+scale = Vector2(1.1, 1.0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/GoalFloor"]
+shape = SubResource("PlatformShape")
 
-[node name="Sprite" type="Sprite2D" parent="Platform2"]
-texture = ExtResource("3")
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(130, 500)
+script = ExtResource("6_player_script")
+collision_layer = 1
+collision_mask = 1
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_player")
+scale = Vector2(2, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("PlayerShape")
 
-[node name="Platform3" type="StaticBody2D" parent="."]
-position = Vector2(820,300)
+[node name="EnemyA" parent="." instance=ExtResource("7_enemy")]
+position = Vector2(450, 420)
+[node name="Sprite2D" parent="EnemyA" index="0"]
+texture = ExtResource("4_enemy1")
 
-[node name="Sprite" type="Sprite2D" parent="Platform3"]
-texture = ExtResource("3")
+[node name="EnemyB" parent="." instance=ExtResource("7_enemy")]
+position = Vector2(700, 340)
+shoot_interval = 1.2
+[node name="Sprite2D" parent="EnemyB" index="0"]
+texture = ExtResource("5_enemy2")
+
+[node name="EnemyC" parent="." instance=ExtResource("7_enemy")]
+position = Vector2(920, 265)
+shoot_interval = 1.0
+[node name="Sprite2D" parent="EnemyC" index="0"]
+texture = ExtResource("4_enemy1")
+
+[node name="Instructions" type="Label" parent="."]
+position = Vector2(28, 24)
+text = "10RL — MINI NIVEL\nFlechas: mover   Espacio: saltar / doble salto   X: disparar"
