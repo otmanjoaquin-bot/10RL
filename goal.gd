@@ -12,8 +12,4 @@ func _on_body_entered(body: Node2D) -> void:
         completed = true
         if body.has_method("level_complete"):
             body.level_complete()
-        var message := Label.new()
-        message.text = "¡NIVEL 1 COMPLETADO!\nLlegaste a la puerta."
-        message.position = Vector2(360, 250)
-        message.add_theme_font_size_override("font_size", 32)
-        get_tree().current_scene.add_child(message)
+        get_tree().change_scene_to_file("res://victory.tscn")
