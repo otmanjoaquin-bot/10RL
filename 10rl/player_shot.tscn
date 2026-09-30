@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dqjaeii288avn"]
+
+[ext_resource type="Texture2D" uid="uid://cjqujeg10oods" path="res://sprites/proyectilesmainpj.png" id="1_f6t6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShot"]
+radius = 8.0
+
+[node name="PlayerShot" type="Area2D" unique_id=1916455071]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=367416024]
+position = Vector2(0, -1.4901161e-08)
+scale = Vector2(0.28515625, 0.30468753)
+texture = ExtResource("1_f6t6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1168037792]
+shape = SubResource("CircleShot")

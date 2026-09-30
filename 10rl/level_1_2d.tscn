@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://c417ad38pmvwo"]
+
+[ext_resource type="Texture2D" uid="uid://dtx71q7w6c4kb" path="res://sprites/background.png" id="1_tvdb5"]
+[ext_resource type="Texture2D" uid="uid://bj5bkxwnwckcb" path="res://sprites/PLATAFORM.png" id="2_0ge80"]
+[ext_resource type="Texture2D" uid="uid://btx55v2cr2uc6" path="res://sprites/mainpj.png" id="3_o7tn0"]
+
+[sub_resource type="RectangleShape2D" id="PlatformLong"]
+size = Vector2(489, 35)
+
+[sub_resource type="RectangleShape2D" id="PlatformShort"]
+size = Vector2(79, 16)
+
+[sub_resource type="RectangleShape2D" id="PlatformGoal"]
+size = Vector2(150, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_naa34"]
+radius = 15.0
+height = 58.0
+
+[node name="Level1" type="Node2D" unique_id=1825415418]
+
+[node name="Background" type="Node2D" parent="." unique_id=358757474]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background" unique_id=806490399]
+z_index = -20
+position = Vector2(720, 337.62497)
+scale = Vector2(2.2898438, 3.7624998)
+texture = ExtResource("1_tvdb5")
+
+[node name="Platforms" type="Node2D" parent="." unique_id=1722696774]
+
+[node name="StartPlatform" type="StaticBody2D" parent="Platforms" unique_id=773117515]
+position = Vector2(220, 560)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/StartPlatform" unique_id=2049036177]
+position = Vector2(-39.624992, 49.125015)
+scale = Vector2(9.560714, 7.2607145)
+texture = ExtResource("2_0ge80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StartPlatform" unique_id=1622544226]
+position = Vector2(-36, 0)
+shape = SubResource("PlatformLong")
+
+[node name="Platform01" type="StaticBody2D" parent="Platforms" unique_id=1767827630]
+position = Vector2(470, 470)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform01" unique_id=410046401]
+scale = Vector2(1.6, 1)
+texture = ExtResource("2_0ge80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform01" unique_id=1792106020]
+position = Vector2(4, 0)
+shape = SubResource("PlatformShort")
+
+[node name="Platform02" type="StaticBody2D" parent="Platforms" unique_id=1561215847]
+position = Vector2(710, 390)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform02" unique_id=732135886]
+scale = Vector2(1.5, 1)
+texture = ExtResource("2_0ge80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform02" unique_id=1729388160]
+shape = SubResource("PlatformShort")
+
+[node name="Platform03" type="StaticBody2D" parent="Platforms" unique_id=1856819820]
+position = Vector2(920, 315)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform03" unique_id=416216038]
+scale = Vector2(1.25, 1)
+texture = ExtResource("2_0ge80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform03" unique_id=119214280]
+shape = SubResource("PlatformShort")
+
+[node name="GoalPlatform" type="StaticBody2D" parent="Platforms" unique_id=868256906]
+position = Vector2(1080, 540)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/GoalPlatform" unique_id=1586647664]
+position = Vector2(-5.0000224, -2.9999824)
+scale = Vector2(2.6857135, 1.6000003)
+texture = ExtResource("2_0ge80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GoalPlatform" unique_id=1851985575]
+position = Vector2(0, -1)
+shape = SubResource("PlatformGoal")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1257266561 groups=["player"]]
+position = Vector2(130, 500)
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=1864311201]
+position = Vector2(0.9999962, 12.999995)
+scale = Vector2(0.9285714, 0.9285714)
+texture = ExtResource("3_o7tn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1543780641]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_naa34")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=435433122]
+
+[node name="Controls" type="Label" parent="HUD" unique_id=1912355600]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 520.0
+offset_bottom = 80.0
+text = "10RL — MINI NIVEL 1
+← → Mover   ESPACIO Saltar   X Disparar"

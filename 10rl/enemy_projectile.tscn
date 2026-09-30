@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://kclt4p5k7tv5"]
+
+[ext_resource type="Texture2D" uid="uid://jdbs3ic4imls" path="res://sprites/proyectilesenemy.png" id="1_ff34o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1td76"]
+size = Vector2(14, 6)
+
+[node name="EnemyProjectile" type="Area2D" unique_id=914038309]
+collision_layer = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2040799489]
+scale = Vector2(0.328125, 0.3671875)
+texture = ExtResource("1_ff34o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=129481681]
+shape = SubResource("RectangleShape2D_1td76")
