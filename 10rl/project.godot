@@ -1,7 +1,7 @@
 [application]
 
 config/name="10RL - Rayman Style Prototype"
-run/main_scene="res://10rl/main_level.tscn"
+run/main_scene="res://10rl/level_1_2d.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://10rl/icon.svg"
 
