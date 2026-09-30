@@ -199,6 +199,36 @@ texture = ExtResource("3_platform")
 position = Vector2(-2.5, 0)
 shape = SubResource("PlatformLong")
 
+[node name="Platform09" type="StaticBody2D" parent="PlatformsExtended" unique_id=771489530]
+position = Vector2(2350, 440)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform09" unique_id=906494370]
+scale = Vector2(2, 1.1714286)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform09" unique_id=1820462900]
+shape = SubResource("PlatformLong")
+
+[node name="Platform10" type="StaticBody2D" parent="PlatformsExtended" unique_id=771489531]
+position = Vector2(2630, 500)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform10" unique_id=906494371]
+scale = Vector2(2.2, 1.1714286)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform10" unique_id=1820462901]
+shape = SubResource("PlatformLong")
+
+[node name="FinalPlatform" type="StaticBody2D" parent="PlatformsExtended" unique_id=771489532]
+position = Vector2(2840, 540)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/FinalPlatform" unique_id=906494372]
+scale = Vector2(1.5, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/FinalPlatform" unique_id=1820462902]
+shape = SubResource("PlatformShort")
+
 [node name="ExtendedEnemies" type="Node2D" parent="." unique_id=1408016388]
 
 [node name="Enemy04" parent="ExtendedEnemies" unique_id=2079427738 instance=ExtResource("7_enemy")]
@@ -236,10 +266,10 @@ position = Vector2(1750, 420)
 position = Vector2(1850, 270)
 
 [node name="Coin14" parent="ExtendedCoins" unique_id=1506455828 instance=ExtResource("8_coin")]
-position = Vector2(2050, 450)
+position = Vector2(2760, 450)
 
 [node name="LevelExit" parent="." unique_id=67626334 instance=ExtResource("10_goal")]
-position = Vector2(2094, 403)
+position = Vector2(2840, 470)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=810384881]
 
