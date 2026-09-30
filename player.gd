@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
             jumps_left -= 1
 
     shoot_cooldown = max(shoot_cooldown - delta, 0.0)
-    if Input.is_action_pressed("shoot") and shoot_cooldown <= 0.0:
+    if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and shoot_cooldown <= 0.0:
         shoot()
         shoot_cooldown = 0.22
 
