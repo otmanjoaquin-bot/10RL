@@ -6,7 +6,7 @@ const FRICTION := 2200.0
 const JUMP_FORCE := -520.0
 const GRAVITY := 1400.0
 const MAX_FALL_SPEED := 850.0
-const SHOT_SCENE := preload("res://10rl/player_shot.tscn")
+const SHOT_SCENE := preload("res://player_shot.tscn")
 
 var facing := 1
 var jumps_left := 1
