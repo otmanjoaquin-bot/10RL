@@ -14,6 +14,13 @@ window/size/window_height_override=648
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep"
 
+[input]
+
+shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":88,"unicode":120)]
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
