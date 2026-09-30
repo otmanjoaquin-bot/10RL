@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://60rchubvc1a5"]
+
+[ext_resource type="Script" uid="uid://d0xe01g1evebk" path="res://goal.gd" id="1_goal"]
+[ext_resource type="Texture2D" uid="uid://c4icyr1pu58xr" path="res://sprites/pasado.png" id="2_door"]
+
+[sub_resource type="RectangleShape2D" id="DoorShape"]
+size = Vector2(45, 183)
+
+[node name="LevelExit" type="Area2D" unique_id=820386433]
+collision_layer = 16
+script = ExtResource("1_goal")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=875912769]
+scale = Vector2(2, 2)
+texture = ExtResource("2_door")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1848288562]
+position = Vector2(42.5, -5.5)
+shape = SubResource("DoorShape")

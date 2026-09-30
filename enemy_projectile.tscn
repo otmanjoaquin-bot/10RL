@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://vssvj7v33hnw"]
+
+[ext_resource type="Script" uid="uid://5qbhy6p1fae0" path="res://enemy_projectile.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://jdbs3ic4imls" path="res://sprites/proyectilesenemy.png" id="2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5j1w"]
+size = Vector2(28, 13)
+
+[node name="EnemyProjectile" type="Area2D" unique_id=865277796]
+collision_layer = 8
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=51573327]
+position = Vector2(-7.1525574e-07, -0.5000013)
+scale = Vector2(0.59375, 0.609375)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1068996646]
+shape = SubResource("RectangleShape2D_f5j1w")

@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://02hhp0fpdobr"]
+
+[ext_resource type="Texture2D" uid="uid://dtx71q7w6c4kb" path="res://sprites/background.png" id="1_bg"]
+[ext_resource type="Texture2D" uid="uid://btx55v2cr2uc6" path="res://sprites/mainpj.png" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://bj5bkxwnwckcb" path="res://sprites/PLATAFORM.png" id="3_platform"]
+[ext_resource type="Script" uid="uid://tbhxkp5c8080" path="res://player.gd" id="6_player"]
+[ext_resource type="PackedScene" uid="uid://jluhxwpiiwof" path="res://enemy.tscn" id="7_enemy"]
+[ext_resource type="PackedScene" uid="uid://cn8yph57uue4b" path="res://coin.tscn" id="8_coin"]
+[ext_resource type="PackedScene" path="res://camera.tscn" id="9_camera"]
+[ext_resource type="PackedScene" uid="uid://60rchubvc1a5" path="res://goal.tscn" id="10_goal"]
+
+[sub_resource type="RectangleShape2D" id="PlatformLong"]
+size = Vector2(113, 26)
+
+[sub_resource type="RectangleShape2D" id="PlatformShort"]
+size = Vector2(85.5, 23)
+
+[sub_resource type="RectangleShape2D" id="PlatformGoal"]
+size = Vector2(59, 28)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jus4"]
+radius = 25.0
+height = 72.0
+
+[node name="Level1" type="Node2D" unique_id=371893205]
+
+[node name="Background" type="Node2D" parent="." unique_id=2017139232]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background" unique_id=370827767]
+z_index = -20
+position = Vector2(1452, 541)
+scale = Vector2(5.655469, 6.961111)
+texture = ExtResource("1_bg")
+
+[node name="Platforms" type="Node2D" parent="." unique_id=2071167614]
+
+[node name="StartPlatform" type="StaticBody2D" parent="Platforms" unique_id=542116288]
+position = Vector2(220, 560)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/StartPlatform" unique_id=731207414]
+position = Vector2(-4.999998, 22.99999)
+scale = Vector2(6.6000004, 4.1499996)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/StartPlatform" unique_id=345747489]
+position = Vector2(-1.5, 0)
+shape = SubResource("PlatformLong")
+
+[node name="Platform01" type="StaticBody2D" parent="Platforms" unique_id=2088873620]
+position = Vector2(470, 470)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform01" unique_id=1847236757]
+position = Vector2(0, 1.5)
+scale = Vector2(1.6, 1.0428572)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform01" unique_id=1256785705]
+position = Vector2(1.5, 2.5)
+shape = SubResource("PlatformShort")
+
+[node name="Platform02" type="StaticBody2D" parent="Platforms" unique_id=869831536]
+position = Vector2(710, 390)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform02" unique_id=1259701475]
+scale = Vector2(1.5, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform02" unique_id=1348737990]
+position = Vector2(0.75, 0)
+shape = SubResource("PlatformShort")
+
+[node name="Platform03" type="StaticBody2D" parent="Platforms" unique_id=189276998]
+position = Vector2(920, 315)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/Platform03" unique_id=1667213910]
+position = Vector2(-5.1250076, 0)
+scale = Vector2(1.3964288, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform03" unique_id=319606100]
+shape = SubResource("PlatformShort")
+
+[node name="GoalPlatform" type="StaticBody2D" parent="Platforms" unique_id=1536609552]
+position = Vector2(1080, 540)
+
+[node name="Sprite" type="Sprite2D" parent="Platforms/GoalPlatform" unique_id=272664915]
+scale = Vector2(1.1, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/GoalPlatform" unique_id=1145133942]
+position = Vector2(0.5, 0)
+shape = SubResource("PlatformGoal")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=745690876 groups=["player"]]
+position = Vector2(130, 500)
+script = ExtResource("6_player")
+
+[node name="Sprite" type="Sprite2D" parent="Player" unique_id=547052929]
+position = Vector2(-13.999996, 1.9999843)
+scale = Vector2(1.1714281, 1.05)
+texture = ExtResource("2_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1181298408]
+position = Vector2(-17, -1)
+shape = SubResource("CapsuleShape2D_6jus4")
+
+[node name="Enemies" type="Node2D" parent="." unique_id=837841569]
+
+[node name="Enemy01" parent="Enemies" unique_id=1319499045 instance=ExtResource("7_enemy")]
+position = Vector2(470, 420)
+
+[node name="Enemy02" parent="Enemies" unique_id=945066861 instance=ExtResource("7_enemy")]
+position = Vector2(710, 340)
+shoot_interval = 1.2
+
+[node name="Enemy03" parent="Enemies" unique_id=1649089126 instance=ExtResource("7_enemy")]
+position = Vector2(920, 265)
+shoot_interval = 1.0
+
+[node name="Coins" type="Node2D" parent="." unique_id=718451511]
+
+[node name="Coin01" parent="Coins" unique_id=1087300085 instance=ExtResource("8_coin")]
+position = Vector2(320, 490)
+
+[node name="Coin02" parent="Coins" unique_id=31557574 instance=ExtResource("8_coin")]
+position = Vector2(381, 433)
+
+[node name="Coin03" parent="Coins" unique_id=1578781885 instance=ExtResource("8_coin")]
+position = Vector2(610, 425)
+
+[node name="Coin04" parent="Coins" unique_id=564839820 instance=ExtResource("8_coin")]
+position = Vector2(710, 320)
+
+[node name="Coin05" parent="Coins" unique_id=822862151 instance=ExtResource("8_coin")]
+position = Vector2(820, 350)
+
+[node name="Coin06" parent="Coins" unique_id=1486469828 instance=ExtResource("8_coin")]
+position = Vector2(920, 245)
+
+[node name="Coin07" parent="Coins" unique_id=1029190244 instance=ExtResource("8_coin")]
+position = Vector2(1040, 490)
+
+[node name="Camera2D" parent="." unique_id=555254066 instance=ExtResource("9_camera")]
+position = Vector2(130, 450)
+
+[node name="PlatformsExtended" type="Node2D" parent="." unique_id=359697571]
+
+[node name="Platform04" type="StaticBody2D" parent="PlatformsExtended" unique_id=1562066557]
+position = Vector2(1180, 430)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform04" unique_id=567614081]
+scale = Vector2(1.5, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform04" unique_id=866052678]
+shape = SubResource("PlatformShort")
+
+[node name="Platform05" type="StaticBody2D" parent="PlatformsExtended" unique_id=1432683117]
+position = Vector2(1380, 350)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform05" unique_id=939438563]
+scale = Vector2(1.7, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform05" unique_id=361644392]
+shape = SubResource("PlatformShort")
+
+[node name="Platform06" type="StaticBody2D" parent="PlatformsExtended" unique_id=578369832]
+position = Vector2(1600, 460)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform06" unique_id=1322988770]
+position = Vector2(1, 0)
+scale = Vector2(2.2, 1.1428572)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform06" unique_id=1279207321]
+position = Vector2(5.5, 3)
+shape = SubResource("PlatformLong")
+
+[node name="Platform07" type="StaticBody2D" parent="PlatformsExtended" unique_id=1705288830]
+position = Vector2(1850, 370)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform07" unique_id=1612470485]
+scale = Vector2(1.5, 1)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform07" unique_id=466882809]
+shape = SubResource("PlatformShort")
+
+[node name="Platform08" type="StaticBody2D" parent="PlatformsExtended" unique_id=771489529]
+position = Vector2(2100, 500)
+
+[node name="Sprite" type="Sprite2D" parent="PlatformsExtended/Platform08" unique_id=906494369]
+position = Vector2(-2, -1)
+scale = Vector2(2, 1.1714286)
+texture = ExtResource("3_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformsExtended/Platform08" unique_id=1820462892]
+position = Vector2(-2.5, 0)
+shape = SubResource("PlatformLong")
+
+[node name="ExtendedEnemies" type="Node2D" parent="." unique_id=1408016388]
+
+[node name="Enemy04" parent="ExtendedEnemies" unique_id=2079427738 instance=ExtResource("7_enemy")]
+position = Vector2(1180, 380)
+
+[node name="Enemy05" parent="ExtendedEnemies" unique_id=244592011 instance=ExtResource("7_enemy")]
+position = Vector2(1380, 300)
+shoot_interval = 1.1
+
+[node name="Enemy06" parent="ExtendedEnemies" unique_id=2034975553 instance=ExtResource("7_enemy")]
+position = Vector2(1600, 410)
+
+[node name="Enemy07" parent="ExtendedEnemies" unique_id=1170688705 instance=ExtResource("7_enemy")]
+position = Vector2(1850, 320)
+shoot_interval = 0.9
+
+[node name="ExtendedCoins" type="Node2D" parent="." unique_id=629228859]
+
+[node name="Coin08" parent="ExtendedCoins" unique_id=1167173584 instance=ExtResource("8_coin")]
+position = Vector2(1180, 370)
+
+[node name="Coin09" parent="ExtendedCoins" unique_id=745347307 instance=ExtResource("8_coin")]
+position = Vector2(1300, 300)
+
+[node name="Coin10" parent="ExtendedCoins" unique_id=2023646896 instance=ExtResource("8_coin")]
+position = Vector2(1380, 250)
+
+[node name="Coin11" parent="ExtendedCoins" unique_id=1027899948 instance=ExtResource("8_coin")]
+position = Vector2(1550, 410)
+
+[node name="Coin12" parent="ExtendedCoins" unique_id=1250894611 instance=ExtResource("8_coin")]
+position = Vector2(1750, 420)
+
+[node name="Coin13" parent="ExtendedCoins" unique_id=2135528599 instance=ExtResource("8_coin")]
+position = Vector2(1850, 270)
+
+[node name="Coin14" parent="ExtendedCoins" unique_id=1506455828 instance=ExtResource("8_coin")]
+position = Vector2(2050, 450)
+
+[node name="LevelExit" parent="." unique_id=67626334 instance=ExtResource("10_goal")]
+position = Vector2(2094, 403)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=810384881]
+
+[node name="Controls" type="Label" parent="HUD" unique_id=1069520308]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 700.0
+offset_bottom = 80.0
+text = "10RL — LEVEL 1
+A / D: Mover   ESPACIO: Saltar   ← / →: Disparar"
