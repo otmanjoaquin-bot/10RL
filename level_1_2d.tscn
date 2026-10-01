@@ -279,4 +279,4 @@ offset_top = 20.0
 offset_right = 700.0
 offset_bottom = 80.0
 text = "10RL — LEVEL 1
-A / D: Mover   ESPACIO: Saltar   CLIC IZQUIERDO: Disparar"
+A / D: Mover   ESPACIO: Saltar   CLIC IZQUIERDO: Disparar   E: Interactuar"
